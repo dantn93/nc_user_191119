@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment                 # Type of Kubernetes resource
+metadata:
+  name: tranngocdan-nc-user           # Name of the Kubernetes resource
+spec:
+  replicas: 1                    # Number of pods to run at any given time
+  selector:
+    matchLabels:
+      app: tranngocdan-nc-user        # This deployment applies to any Pods matching the specified label
+  template:                      # This deployment will create a set of pods using the configurations in this template
+    metadata:
+      labels:                    # The labels that will be applied to all of the pods in this deployment
+        app: tranngocdan-nc-user 
+    spec:                        # Spec for the container which will run in the Pod
+      containers:
+      - name: tranngocdan-nc-user
+        image: tranngocdan/tranngocdan-nc-user
+        ports:
+          - containerPort: 9092
+            name: web
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+          limits:
+            memory: "75Mi"
+            cpu: "75m"
+---
+apiVersion: v1
+kind: Service                    # Type of kubernetes resource
+metadata:
+  name: tranngocdan-nc-user-service   # Name of the resource
+spec:
+  type: NodePort                 # If you're deploying on cloud, you can use `type: LoadBalancer`. It will automatically provision a load balancer with the cloud provider that will route traffic to your application.
+  ports:                         # Take incoming HTTP requests on port 9090 and forward them to the targetPort of 8080
+  - name: http
+    port: 9093
+    targetPort: 9092
+  selector:
+    app: tranngocdan-nc-user          # Map any pod with name tranngocdan-nc_student to this service

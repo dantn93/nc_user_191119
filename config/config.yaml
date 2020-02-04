@@ -1,0 +1,8 @@
+MongoDB:
+  Uri: "mongodb+srv://admin:pYMuwWdrWULs8EUX@cluster0-nmhgi.mongodb.net"
+  HostName: "localhost"
+  Username: "admin"
+  Password: "pYMuwWdrWULs8EUX"
+
+JWTSeret:
+  JWTEncodeKey: mysecret1234
