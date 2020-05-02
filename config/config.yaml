@@ -1,5 +1,5 @@
 MongoDB:
-  Uri: "mongodb+srv://admin:pYMuwWdrWULs8EUX@cluster0-nmhgi.mongodb.net"
+  Uri: "mongodb+srv://admin:47fMSxobbPOTepmP@cluster0-nmhgi.mongodb.net/test?retryWrites=true&w=majority"
   HostName: "localhost"
   Username: "admin"
   Password: "pYMuwWdrWULs8EUX"
